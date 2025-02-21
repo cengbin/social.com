@@ -29,7 +29,7 @@ function App() {
       <main className="main-content">
         <div className="video-container">
           <div className="primary-content">
-            <VideoPlayer videoId={videoId} />
+            <VideoPlayer videoId={videoId} videoUrl={'/video/movie.mp4'} />
             <VideoInfo {...videoData} />
           </div>
           <div className="secondary-content">

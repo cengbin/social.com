@@ -1,0 +1,33 @@
+{
+  "code": 0,
+  "data": {
+    "autoadd": "0",
+    "avatar": "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
+    "bindemail": "",
+    "chk_tm": "2024-10-16 13:59:37",
+    "create_via": "",
+    "del_tm": "",
+    "email": "zengweibin@kingsoft.com",
+    "failure_tms": 0,
+    "gender": "0",
+    "gmid": "GM3676",
+    "id": 520,
+    "koa_dep": "",
+    "localpwd_ip": "",
+    "localpwd_tm": "2024-10-16 13:59:37",
+    "memo": "",
+    "name": "邓小毛",
+    "origin": "kingsoft",
+    "phone": "13552016432",
+    "pwd": "",
+    "qywx": "",
+    "rtx": "",
+    "salt": "",
+    "station": "运营发行中心/用户服务中心/技术部/技术开发组",
+    "status": "1",
+    "tm": "2024-10-16 13:59:37",
+    "type": "0",
+    "work_id": ""
+  },
+  "message": "成功"
+}

@@ -50,6 +50,7 @@
 }
 
 .video-title {
+  text-align: left;
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
