@@ -31,6 +31,16 @@
   color: #00a1d6;
 }
 
+.logo {
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
 .main-nav {
   display: flex;
   gap: 24px;

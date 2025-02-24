@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
-import Header from './components/Header'
-import VideoGrid from './components/VideoGrid'
+import Header from '../../components/Header.tsx'
+import VideoGrid from './components/VideoGrid.tsx'
 
 function App() {
   return (

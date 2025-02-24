@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './VideoGrid.css';
-import {SM} from "../../services";
+import {SM} from "../../../services";
 
 interface Video {
     id: number;

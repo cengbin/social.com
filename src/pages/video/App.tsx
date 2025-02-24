@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import Header from '../index/components/Header'
-import VideoPlayer from './components/VideoPlayer'
-import VideoInfo from './components/VideoInfo'
+import Header from '../../components/Header.tsx'
+import VideoPlayer from './components/VideoPlayer.tsx'
+import VideoInfo from './components/VideoInfo.tsx'
 
 function App() {
   const [videoId, setVideoId] = useState<string>('')
