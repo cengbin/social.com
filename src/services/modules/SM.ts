@@ -2,7 +2,7 @@ import {Get} from '../decorator/http';
 
 export class SM {
 
-    @Get({url: '/mock/video_list.json'})
+    @Get({url: '/mock/home_video_list.json'})
     static async getVideoList(params: any = {}) {
         return params;
     }

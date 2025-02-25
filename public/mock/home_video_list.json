@@ -1,0 +1,35 @@
+{
+  "code": 0,
+  "data": [
+    {
+      "id": 1,
+      "title": "1_俄罗斯方块-初始化表格",
+      "cover": "/image/320.png",
+      "uploader": "UP主1",
+      "views": "92万观看",
+      "duration": "12:34",
+      "url": "/video/fangkuai/1_俄罗斯方块-初始化表格.mp4",
+      "type": "video"
+    },
+    {
+      "id": 2,
+      "title": "2_俄罗斯方块-方块的设计",
+      "cover": "/image/320.png",
+      "uploader": "UP主1",
+      "views": "62万观看",
+      "duration": "12:34",
+      "url": "/video/fangkuai/2_俄罗斯方块-方块的设计.mp4",
+      "type": "video_group"
+    },
+    {
+      "id": 3,
+      "title": "3_俄罗斯方块-方块的渲染",
+      "cover": "/image/320.png",
+      "uploader": "UP主1",
+      "views": "62万观看",
+      "duration": "12:34",
+      "url": "/video/fangkuai/3_俄罗斯方块-方块的渲染.mp4"
+    }
+  ],
+  "message": "成功"
+}
