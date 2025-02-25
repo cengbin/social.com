@@ -1,5 +1,5 @@
 import React from 'react';
-import './VideoInfo.css';
+import './VideoInfo.scss';
 
 interface VideoInfoProps {
   title: string;
