@@ -1,10 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import './VideoPlayer.scss';
-
-interface VideoPlayerProps {
-  videoId: string;
-  videoUrl: string; 
-}
+import { VideoPlayerProps } from '../types';
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -24,6 +20,20 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
   const [speedMenuTimer, setSpeedMenuTimer] = useState<NodeJS.Timeout | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isWebFullscreen, setIsWebFullscreen] = useState(false);
+  const [isShortcutsVisible, setIsShortcutsVisible] = useState(false);
+  const [isEnded, setIsEnded] = useState(false);
+
+  const shortcuts = [
+    { key: 'Space / K', description: '播放/暂停' },
+    { key: '←', description: '后退 5 秒' },
+    { key: '→', description: '前进 5 秒' },
+    { key: '↑', description: '增加音量' },
+    { key: '↓', description: '减少音量' },
+    { key: 'M', description: '静音/取消静音' },
+    { key: 'F', description: '全屏' },
+    { key: 'W', description: '网页全屏' },
+    { key: '1-5', description: '设置播放速度 (1x - 2x)' }
+  ];
 
   const togglePlay = useCallback(() => {
     if (videoRef.current) {
@@ -105,6 +115,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
     setIsWebFullscreen(!isWebFullscreen);
   }, [isWebFullscreen]);
 
+  const toggleShortcuts = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsShortcutsVisible(!isShortcutsVisible);
+  }, [isShortcutsVisible]);
+
   const formatTime = useCallback((timeInSeconds: number): string => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
@@ -173,6 +188,37 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
       setIsSpeedMenuVisible(false);
     }, 100);
     setSpeedMenuTimer(timer);
+  }, []);
+
+  const handleVideoEnded = useCallback(() => {
+    setIsPlaying(false);
+    setIsEnded(true);
+  }, []);
+
+  const handleReplay = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play();
+      setIsPlaying(true);
+      setIsEnded(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    video.addEventListener('progress', handleProgress);
+    video.addEventListener('ended', handleVideoEnded);
+
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('progress', handleProgress);
+      video.removeEventListener('ended', handleVideoEnded);
+    };
   }, []);
 
   useEffect(() => {
@@ -284,23 +330,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
     };
   }, [volume, togglePlay, toggleFullscreen, toggleWebFullscreen, toggleMute, handleSpeedChange]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.addEventListener('timeupdate', handleTimeUpdate);
-      video.addEventListener('progress', handleProgress);
-      video.addEventListener('loadedmetadata', handleLoadedMetadata);
-    }
-
-    return () => {
-      if (video) {
-        video.removeEventListener('timeupdate', handleTimeUpdate);
-        video.removeEventListener('progress', handleProgress);
-        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      }
-    };
-  }, [handleTimeUpdate, handleProgress, handleLoadedMetadata]);
-
   const speeds = [2, 1.75, 1.5, 1.25, 1];
 
   return (
@@ -314,6 +343,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
           className="video-element"
           src={videoUrl}
         />
+        {isEnded && (
+          <div className="replay-overlay" onClick={handleReplay}>
+            <div className="replay-button">
+              <svg viewBox="0 0 24 24" width="48" height="48">
+                <path fill="currentColor" d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+              </svg>
+              <span>重新播放</span>
+            </div>
+          </div>
+        )}
       </div>
       <div className="video-controls">
         <div className="progress-bar" ref={progressRef} onClick={handleProgressClick}>
@@ -325,71 +364,92 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
             <button className="control-btn play" onClick={togglePlay}>
               {isPlaying ? '暂停' : '播放'}
             </button>
-            <div 
-              className="volume-control" 
-              onMouseEnter={() => setIsVolumeVisible(true)}
-              onMouseLeave={() => setIsVolumeVisible(false)}
+            <span className="time-display">{currentTime} / {duration}</span>
+          </div>
+          <div className="control-right">
+            <div className="shortcuts-control">
+              <button className="control-btn" onClick={toggleShortcuts}>
+                ⌨️
+              </button>
+              {isShortcutsVisible && (
+                  <div className="shortcuts-menu visible">
+                    <div className="shortcuts-header">
+                      <h3>快捷键</h3>
+                      <button className="close-btn" onClick={toggleShortcuts}>×</button>
+                    </div>
+                    <div className="shortcuts-content">
+                      {shortcuts.map((shortcut, index) => (
+                          <div key={index} className="shortcut-item">
+                            <kbd>{shortcut.key}</kbd>
+                            <span>{shortcut.description}</span>
+                          </div>
+                      ))}
+                    </div>
+                  </div>
+              )}
+            </div>
+            <div
+                className="volume-control"
+                onMouseEnter={() => setIsVolumeVisible(true)}
+                onMouseLeave={() => setIsVolumeVisible(false)}
             >
               <button className="control-btn volume" onClick={toggleMute}>
                 {getVolumeIcon()}
               </button>
-              <div 
-                className={`volume-slider-container ${isVolumeVisible ? 'visible' : ''}`}
-                onClick={handleVolumeContainerClick}
+              <div
+                  className={`volume-slider-container ${isVolumeVisible ? 'visible' : ''}`}
+                  onClick={handleVolumeContainerClick}
               >
                 <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={volume}
-                  className="volume-slider"
-                  onChange={handleVolumeChange}
-                  onClick={(e) => e.stopPropagation()}
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={volume}
+                    className="volume-slider"
+                    onChange={handleVolumeChange}
+                    onClick={(e) => e.stopPropagation()}
                 />
               </div>
             </div>
-            <span className="time-display">{currentTime} / {duration}</span>
-          </div>
-          <div className="control-right">
-            <div className="speed-control" 
-              onMouseEnter={handleSpeedMenuEnter}
-              onMouseLeave={handleSpeedMenuLeave}
+            <div className="speed-control"
+                 onMouseEnter={handleSpeedMenuEnter}
+                 onMouseLeave={handleSpeedMenuLeave}
             >
-              <button 
-                className="control-btn speed"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsSpeedMenuVisible(!isSpeedMenuVisible);
-                }}
+              <button
+                  className="control-btn speed"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsSpeedMenuVisible(!isSpeedMenuVisible);
+                  }}
               >
-                {playbackSpeed}x
+                倍速
               </button>
-              <div 
-                className={`speed-menu ${isSpeedMenuVisible ? 'visible' : ''}`}
-                onMouseEnter={handleSpeedMenuEnter}
-                onMouseLeave={handleSpeedMenuLeave}
-                onClick={(e) => e.stopPropagation()}
+              <div
+                  className={`speed-menu ${isSpeedMenuVisible ? 'visible' : ''}`}
+                  onMouseEnter={handleSpeedMenuEnter}
+                  onMouseLeave={handleSpeedMenuLeave}
+                  onClick={(e) => e.stopPropagation()}
               >
                 {speeds.map(speed => (
-                  <button
-                    key={speed}
-                    className={`speed-item ${speed === playbackSpeed ? 'active' : ''}`}
-                    onClick={(e) => handleSpeedChange(speed, e)}
-                  >
-                    {speed}x
-                  </button>
+                    <button
+                        key={speed}
+                        className={`speed-item ${speed === playbackSpeed ? 'active' : ''}`}
+                        onClick={(e) => handleSpeedChange(speed, e)}
+                    >
+                      {speed}x
+                    </button>
                 ))}
               </div>
             </div>
-            <button 
-              className="control-btn web-fullscreen" 
-              onClick={toggleWebFullscreen}
+            <button
+                className="control-btn web-fullscreen"
+                onClick={toggleWebFullscreen}
             >
               {isWebFullscreen ? '退出网页全屏' : '网页全屏'}
             </button>
-            <button 
-              className="control-btn fullscreen" 
-              onClick={toggleFullscreen}
+            <button
+                className="control-btn fullscreen"
+                onClick={toggleFullscreen}
             >
               {isFullscreen ? '退出全屏' : '全屏'}
             </button>

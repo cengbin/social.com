@@ -1,13 +1,6 @@
 import React from 'react';
 import './VideoInfo.scss';
-
-interface VideoInfoProps {
-  title: string;
-  uploader: string;
-  views: string;
-  likes: string;
-  date: string;
-}
+import { VideoInfoProps } from '../types';
 
 const VideoInfo: React.FC<VideoInfoProps> = ({
   title,

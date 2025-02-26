@@ -3,10 +3,20 @@ import './App.css'
 import Header from '../../components/Header.tsx'
 import VideoPlayer from './components/VideoPlayer.tsx'
 import VideoInfo from './components/VideoInfo.tsx'
+import SecondaryContent from "./components/SecondaryContent.tsx";
 
 function App() {
     const [videoId, setVideoId] = useState<string>('')
     const [videoUrl, setVideoUrl] = useState<string>('')
+    const [currentVideoId, setCurrentVideoId] = useState('1');
+
+    const handleVideoSelect = (videoId: string) => {
+        setCurrentVideoId(videoId);
+        // 更新 URL 参数
+        const params = new URLSearchParams(window.location.search);
+        params.set('id', videoId);
+        window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+    };
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search)
@@ -14,6 +24,7 @@ function App() {
         const videoUrl = params.get('url') || '/video/movie.mp4'
         setVideoId(videoId)
         setVideoUrl(videoUrl)
+        setCurrentVideoId(videoId)
     }, [])
 
     // 模拟视频数据
@@ -35,7 +46,10 @@ function App() {
                         <VideoInfo {...videoData} />
                     </div>
                     <div className="secondary-content">
-                        {/* 这里可以添加推荐视频列表等其他内容 */}
+                        <SecondaryContent
+                            currentVideoId={currentVideoId}
+                            onVideoSelect={handleVideoSelect}
+                        />
                     </div>
                 </div>
             </main>
