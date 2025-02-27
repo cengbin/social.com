@@ -114,7 +114,7 @@ const VideoGrid: React.FC = () => {
     const [videoList, setVideoList] = useState<Video[]>([]);
 
     useEffect(() => {
-        SM.getAllVideoList({}).then(async result => {
+        SM.getHomeVideoList({}).then(async result => {
             for (let i = 0; i < result.data.length; i++) {
                 const {frameData, duration, videoName} = await getVideoFirstFrame(result.data[i]['videoUrl']);
                 result.data[i].frameData = frameData;

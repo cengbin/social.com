@@ -144,7 +144,7 @@ const SecondaryContent: React.FC<SecondaryContentProps> = ({
           {recommendedVideos.map((video) => (
             <div
               key={video.id}
-              className={`video-item ${video.id == currentVideoId ? 'active' : ''}`}
+              className={`video-item ${video.id === Number(currentVideoId) ? 'active' : ''}`}
               onClick={() => {
                 onVideoSelect(video.id);
                 // 更新URL参数并刷新页面

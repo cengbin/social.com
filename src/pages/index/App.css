@@ -1,25 +1,59 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
 
 .app {
-  min-height: 100vh;
-  background-color: #f1f2f3;
+    padding-top: 64px;
+    width: 100%;
+    background-color: #f4f5f7;
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
 }
 
 .main-content {
-  margin-top: 64px;
-  padding: 20px 0;
+    max-width: 1280px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.original-video-grid-section {
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 16px;
+    color: #666;
+}
+
+.video-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.category-section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.category-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #18191c;
+    margin: 0 0 20px 0;
+    padding-left: 10px;
+    border-left: 4px solid #00aeec;
 }

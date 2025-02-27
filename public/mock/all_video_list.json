@@ -2,16 +2,245 @@
   "code": 0,
   "data": [
     {
-      "id": 1,
-      "videoUrl": "/video/fangkuai/1_俄罗斯方块-初始化表格.mp4"
+      "name": "128-视觉笔记入门课",
+      "type": "directory",
+      "children": [
+        {
+          "name": "01丨开篇词 (1讲)",
+          "type": "directory",
+          "children": [
+            {
+              "name": "00丨开篇词丨一图胜千言.html",
+              "type": "document",
+              "size": 29009361
+            },
+            {
+              "name": "00丨开篇词丨一图胜千言.m4a",
+              "type": "audio",
+              "size": 8745930
+            },
+            {
+              "name": "00丨开篇词丨一图胜千言.pdf",
+              "type": "document",
+              "size": 44033550
+            }
+          ]
+        },
+        {
+          "name": "02丨技巧篇 (11讲)",
+          "type": "directory",
+          "children": [
+            {
+              "name": "01丨基础：只用点线面也能搞定视觉笔记.html",
+              "type": "document",
+              "size": 28606041
+            },
+            {
+              "name": "01丨基础：只用点线面也能搞定视觉笔记.m4a",
+              "type": "audio",
+              "size": 12109714
+            },
+            {
+              "name": "01丨基础：只用点线面也能搞定视觉笔记.pdf",
+              "type": "document",
+              "size": 22996652
+            },
+            {
+              "name": "02丨人物：如何画出引人注目的主角？.html",
+              "type": "document",
+              "size": 12464959
+            },
+            {
+              "name": "02丨人物：如何画出引人注目的主角？.m4a",
+              "type": "audio",
+              "size": 17823191
+            },
+            {
+              "name": "02丨人物：如何画出引人注目的主角？.pdf",
+              "type": "document",
+              "size": 9605782
+            }
+          ]
+        },
+        {
+          "name": "03丨实践篇 (2讲)",
+          "type": "directory",
+          "children": [
+            {
+              "name": "12丨静态实践：如何做图书的视觉笔记？.html",
+              "type": "document",
+              "size": 4792701
+            },
+            {
+              "name": "12丨静态实践：如何做图书的视觉笔记？.m4a",
+              "type": "audio",
+              "size": 9908603
+            },
+            {
+              "name": "12丨静态实践：如何做图书的视觉笔记？.mp4",
+              "type": "video",
+              "size": 3756092
+            },
+            {
+              "name": "12丨静态实践：如何做图书的视觉笔记？.pdf",
+              "type": "document",
+              "size": 5798438
+            }
+          ]
+        },
+        {
+          "name": "04丨特别放送 (1讲)",
+          "type": "directory",
+          "children": [
+            {
+              "name": "答疑丨笔记大触们可能没有告诉你的那些事.html",
+              "type": "document",
+              "size": 5252182
+            },
+            {
+              "name": "答疑丨笔记大触们可能没有告诉你的那些事.m4a",
+              "type": "audio",
+              "size": 12482950
+            },
+            {
+              "name": "答疑丨笔记大触们可能没有告诉你的那些事.mp4",
+              "type": "video",
+              "size": 2146426
+            },
+            {
+              "name": "答疑丨笔记大触们可能没有告诉你的那些事.pdf",
+              "type": "document",
+              "size": 5106955
+            }
+          ]
+        },
+        {
+          "name": "05丨结束语 (1讲)",
+          "type": "directory",
+          "children": [
+            {
+              "name": "结束语丨你和你的笔记都闪闪发光.html",
+              "type": "document",
+              "size": 3665886
+            },
+            {
+              "name": "结束语丨你和你的笔记都闪闪发光.m4a",
+              "type": "audio",
+              "size": 5967694
+            },
+            {
+              "name": "结束语丨你和你的笔记都闪闪发光.pdf",
+              "type": "document",
+              "size": 2522269
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 2,
-      "videoUrl": "/video/fangkuai/2_俄罗斯方块-方块的设计.mp4"
+      "name": "161-手机摄影",
+      "type": "directory",
+      "children": [
+        {
+          "name": "开篇词｜手机拍照这件小事.html",
+          "type": "document",
+          "size": 18240830
+        },
+        {
+          "name": "开篇词｜手机拍照这件小事.m4a",
+          "type": "audio",
+          "size": 6084200
+        },
+        {
+          "name": "开篇词｜手机拍照这件小事.mp4",
+          "type": "video",
+          "size": 17335867
+        },
+        {
+          "name": "开篇词｜手机拍照这件小事.pdf",
+          "type": "document",
+          "size": 12964681
+        },
+        {
+          "name": "01｜拍摄前，我们需要做什么？.html",
+          "type": "document",
+          "size": 30064711
+        },
+        {
+          "name": "01｜拍摄前，我们需要做什么？.m4a",
+          "type": "audio",
+          "size": 13044735
+        },
+        {
+          "name": "01｜拍摄前，我们需要做什么？.pdf",
+          "type": "document",
+          "size": 120355616
+        }
+      ]
     },
     {
-      "id": 3,
-      "videoUrl": "/video/fangkuai/3_俄罗斯方块-方块的渲染.mp4"
+      "name": "168-大厂晋升指南",
+      "type": "directory"
+    },
+    {
+      "name": "182-MySQL 必知必会",
+      "type": "directory"
+    },
+    {
+      "name": "419 - 双越-前端框架及项目面试",
+      "type": "directory"
+    },
+    {
+      "name": "WebGL基础篇实战视频课程",
+      "type": "directory"
+    },
+    {
+      "name": "Python3入门机器学习",
+      "type": "directory"
+    },
+    {
+      "name": "Python3系统入门人工智能",
+      "type": "directory"
+    },
+    {
+      "name": "Vue.js 源码全方位深入解析",
+      "type": "directory"
+    },
+    {
+      "name": "Web前端全栈工程师2021",
+      "type": "directory"
+    },
+    {
+      "name": "从0打造微前端框架",
+      "type": "directory"
+    },
+    {
+      "name": "前端模拟面试",
+      "type": "directory"
+    },
+    {
+      "name": "web前端高级工程师020期",
+      "type": "directory"
+    },
+    {
+      "name": "TS从入门到深度掌握",
+      "type": "directory"
+    },
+    {
+      "name": "前端模块化开发应用",
+      "type": "directory"
+    },
+    {
+      "name": "Java工程师2022版",
+      "type": "directory"
+    },
+    {
+      "name": "ReactHooks重构去哪网购票",
+      "type": "directory"
+    },
+    {
+      "name": "摄影课程",
+      "type": "directory"
     }
   ],
   "message": "成功"
