@@ -1,8 +1,8 @@
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 20px 0;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -15,6 +15,7 @@
   cursor: pointer;
   text-decoration: none;
   display: block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .video-card:hover {
@@ -24,6 +25,7 @@
 .video-cover {
   position: relative;
   aspect-ratio: 16/10;
+  line-height: 0;
   background: #f1f2f3;
   overflow: hidden;
 }
