@@ -2,24 +2,8 @@
   "code": 0,
   "data": [
     {
-      "id": 1,
-      "videoUrl": "/video/马士兵/1_俄罗斯方块-初始化表格.mp4"
-    },
-    {
-      "id": 2,
-      "videoUrl": "/video/马士兵/2_俄罗斯方块-方块的设计.mp4"
-    },
-    {
-      "id": 3,
-      "videoUrl": "/video/马士兵/3_俄罗斯方块-方块的渲染.mp4"
-    },
-    {
       "id": 4,
-      "videoUrl": "/video/哔哩哔哩/揭秘，小我14岁的老挝媳妇为何答应和我在一起.mp4"
-    },
-    {
-      "id": 5,
-      "videoUrl": "/video/测试视频.mp4"
+      "videoUrl": "http://static.miimo.com:5000/哔哩哔哩/揭秘，小我14岁的老挝媳妇为何答应和我在一起.mp4"
     }
   ],
   "message": "成功"
