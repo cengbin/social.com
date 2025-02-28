@@ -1,13 +1,13 @@
 import {Get} from '../decorator/http';
 
 export class SM {
-    @Get({url: '/mock/home_video_list.json'})
-    static async getHomeVideoList(params: any = {}) {
+    @Get({url: '/mock/all_video_list.json'})
+    static async getFiles(params: any = {}) {
         return params;
     }
 
-    @Get({url: '/mock/all_video_list.json'})
-    static async getAllVideoList(params: any = {}) {
+    @Get({url: '/mock/home_video_list.json'})
+    static async getHomeVideoList(params: any = {}) {
         return params;
     }
 
