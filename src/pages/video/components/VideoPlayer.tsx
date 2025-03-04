@@ -340,8 +340,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, videoUrl }) => {
       <div className="video-player">
         <video
           ref={videoRef}
-          className="video-element"
           src={videoUrl}
+          className="video-element"
+          onClick={togglePlay}
         />
         {isEnded && (
           <div className="replay-overlay" onClick={handleReplay}>
